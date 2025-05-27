@@ -1,16 +1,29 @@
-on: push
 name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches:
+      - main   # Change this if you're using a different branch like 'master'
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    
-    - name: 📂 Sync files
+
+    - name: 📂 Sync files via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server:  ftp.lovyadesignstudio.in
+        server: ftp.lovyadesignstudio.in
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: /public_html/tmb-password-manager/    # Change to your target folder
+        local-dir: ./                                     # Keep as ./ unless you're in a subfolder
+        exclude: |
+          **/.git*
+          **/node_modules/**
+          **/README.md
+          **/.github/**
