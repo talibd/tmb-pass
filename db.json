@@ -1,0 +1,86 @@
+{
+  "accounts": [
+    {
+      "id": "d9f6",
+      "platform": "pinterest",
+      "email": "talib@gmail.com",
+      "username": "Himanshu",
+      "password": "tailib2005",
+      "labels": [
+        "Two-Step Verification",
+        "New"
+      ],
+      "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://in.pinterest.com/&size=64"
+    },
+    {
+      "platform": "canva",
+      "email": "talibkhan111105@gmail.com",
+      "username": "hello123",
+      "password": "hellocanva",
+      "labels": [
+        "hello",
+        "my canve"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=canva.com&sz=64",
+      "id": "d8f6"
+    },
+    {
+      "id": "76b0",
+      "platform": "chatgpt",
+      "email": "talib@gmail.com",
+      "username": "talib",
+      "password": "jndsfuhsudhfishidfuosg",
+      "labels": [
+        "ai",
+        "base account",
+        "personal"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64"
+    },
+    {
+      "platform": "Gmail",
+      "email": "talibkhan111105@gmail.com",
+      "username": "talib",
+      "password": "a9f4a41dd5f293f6b8eb229604faaf0e:54438daced471eaf50aeb77b25dd80b7",
+      "labels": [
+        "personal"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=https://mail.google.com/mail/&sz=64",
+      "id": "4159"
+    },
+    {
+      "id": "e2d9",
+      "platform": "youtube",
+      "email": "talibkhan111105@gmail.com",
+      "username": "talib",
+      "password": "5509103e8591d4132f502203f4382e7d:a2c1996bacb46267102f5b70ffca112e",
+      "labels": [
+        "streaming"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=https://www.youtube.com/watch?v=OsUFgUxm5bY&list=RDOsUFgUxm5bY&start_radio=1&sz=64"
+    },
+    {
+      "id": "825e",
+      "platform": "wordpress",
+      "email": "admin@one.medclasses.in",
+      "username": "hello123",
+      "password": "10d54f7fb222a3f9387f772ff12acb34:85094ddf6da1e593128b9b4b78531dea",
+      "labels": [
+        "wp admin"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=https://wordpress.com/&sz=64"
+    },
+    {
+      "id": "e781",
+      "platform": "quora",
+      "email": "surajgod007@gmail.com",
+      "username": "itsme",
+      "password": "120274d9c6afb8d8ccb1feb85ffdd0c5:6df0cd9c3c602a31de492a11cb3f35c6",
+      "labels": [
+        "blogging",
+        "seo"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=https://www.quora.com/&sz=64"
+    }
+  ]
+}

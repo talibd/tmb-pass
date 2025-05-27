@@ -1,0 +1,68 @@
+<%- include("partials/header") %>
+
+  <!-- heading section  -->
+
+  <div
+    class="flex flex-row justify-between items-start p-10 bg-[url('https://i.pinimg.com/736x/ef/48/ea/ef48eae6d06fa7848a58019e6858f8ab.jpg')] bg-cover rounded-[25px]">
+
+    <div class="heading-wrapper flex gap-4 flex-row">
+      <!-- <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+        class="rounded-full aspect-square object-cover h-[8rem]" alt="placeholder"> -->
+      <div class="flex flex-col gap-1 -mt-2">
+        <h1 class="font-Britanica text-white text-5xl leading-none">Password</h1>
+        <h1 class="font-Britanica text-white text-5xl leading-none">Managment.</h1>
+      </div>
+    </div>
+
+    <!-- <div class="bg-black text-white text-m  w-[125px] h-[50px] flex gap-2 items-center justify-center rounded-[10px] p-1">
+      <i data-lucide="plus" class="w-[22px] h-[22px]"></i>
+      Add
+    </div> -->
+  </div>
+
+  <!-- feature section -->
+
+  <div class="flex flex-row gap-2 mt-5">
+    <!-- search bar section  -->
+    <div class="flex flex-row items-center justify-start gap-2 relative w-full sm:w-96">
+      <input type="search" name="search" id="w_search" placeholder="Search..."
+        class="w-full  h-[50px] rounded-[99px] px-4 pl-10 text-gray-700 focus:outline-none bg-black/5" />
+      <i data-lucide="search" class="absolute ml-3 text-gray-500 w-[20px] h-[20px]"></i>
+    </div>
+
+    <!-- add button section  -->
+    <% if (isAdmin) { %>
+      <%- include('partials/addButton') %>
+        <% } %>
+
+  </div>
+  <hr class="my-6 border-[1.5px] rounded-full bg-gray-700">
+
+  <!-- password list section -->
+
+  <div class="flex flex-col gap-2">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-start">
+
+
+      <% cards.forEach(function(card) { %>
+        <%- include('partials/card', { card: { id: card.id, favicon: card.favicon || 'images/logo.png' , title:
+          card.platform, subtitle: card.email, username: card.username, password: card.password, labels: card.labels }
+          }) %>
+          <% }) %>
+
+            <!-- <% cards.forEach(function(card) { %>
+      <%- include('partials/card', { card }) %>
+    <% }) %> -->
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+  <%- include('partials/editButton') %>
+    <%- include("partials/footer") %>

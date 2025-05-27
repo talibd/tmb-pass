@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Britanica-Regular';
+  src: url('/fonts/Britanica-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-Britanica {
+  font-family: 'Britanica-Regular', sans-serif;
+}
+
+/* Hide scrollbar for elements with .scrollbar-hide */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+ .custom-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50px);
+    background: #1f1f1f;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
+    z-index: 9999;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .custom-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .custom-toast .icon {
+    flex-shrink: 0;
+  }
+
+
+  [data-card-content] {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 0;
+}
+
+  .expanded [data-card-content] {
+    max-height: 500px; /* Set to a value larger than content height */
+  }
+
+  .expanded [data-chevron-down] {
+    display: none;
+  }
+
+  .expanded [data-chevron-up] {
+    display: inline;
+  }
+
+  [data-chevron-up] {
+    display: none;
+  }
+
+  .bg65{
+    background-size: 100%;
+  }

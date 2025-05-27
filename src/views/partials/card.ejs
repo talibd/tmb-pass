@@ -1,0 +1,79 @@
+<div class="p-3 bg-black/5 rounded-[20px] w-full overflow-hidden flex flex-col card-wrapper" data-card
+    data-title="<%= card?.title %>" data-subtitle="<%= card?.subtitle %>" data-username="<%= card?.username %>"
+    data-favicon="<%= card?.favicon %>">
+    <div class="flex flex-row justify-between items-center relative">
+        <div class="flex flex-row gap-2 items-center">
+            <div class="p-2 w-[50px] h-[50px] flex items-center justify-center  bg-white rounded-full">
+                <div class="w-full h-full rounded-xl bg-[url('<%= card.favicon %>')]  bg65 bg-no-repeat  bg-center ">
+                </div>
+            </div>
+            <div class="flex flex-col gap-0">
+                <h1 class="font-poppins text-black   line-clamp-1 capitalize max-w-[200px]">
+                    <%= card?.title || 'ChatGPT' %>
+                </h1>
+                <p class="text-sm leading-0 text-gray-500 line-clamp-1">
+                    <%= card?.subtitle || 'demo@gmail.com' %>
+                </p>
+            </div>
+        </div>
+        <div class="p-3 absolute top-0 right-0 z-10 rounded-full bg-[#f2f2f2] hover:bg-[#e7e6e6] cursor-pointer"
+            data-card-toggle>
+            <i data-lucide="chevron-down" class="text-gray-500 relative top-[2px]" data-chevron-down></i>
+            <i data-lucide="chevron-up" class="text-gray-500 relative  hidden" data-chevron-up></i>
+        </div>
+
+    </div>
+
+    <div class="flex-col gap-2 flex justify-center items-center overflow-hidden " data-card-content>
+        <hr class="border-[1.5px] rounded-full bg-gray-700 w-full mt-3 mb-1">
+        <div class="flex flex-row gap-5 w-full">
+            <span class="flex flex-row gap-1 items-center text-sm text-gray-500">
+                <i data-lucide="user" class="w-[15px] h-[15px]"></i>
+                <%= card?.username || 'Himanshu' %>
+            </span>
+            <span class="flex flex-row gap-1 items-center text-sm text-gray-500">
+                <i data-lucide="lock" class="w-[15px] h-[15px]"></i>
+                <input type="password" name="password" class="bg-transparent focus:outline-none" readonly
+                    value="<%= card?.password %>" data-password-input>
+            </span>
+        </div>
+        <div class="flex flex-row gap-2 my-1 w-full overflow-x-scroll scrollbar-hide">
+            <% if (card?.labels && card.labels.length) { %>
+                <% card.labels.forEach(function(lbl) { %>
+                    <span class="py-1 px-3 bg-black/5 rounded-full text-[0.7rem] whitespace-nowrap text-gray-500">
+                        <%= lbl %>
+                    </span>
+                    <% }); %>
+                        <% } %>
+
+        </div>
+        <div class="flex flex-row items-center justify-end w-full mt-2 gap-3">
+
+
+            <button class="p-3 rounded-full text-gray-600 bg-black/5 w-[44px] h-[44px] hover:bg-black/10" data-eye-btn
+                type="button">
+                <i data-lucide="eye" class="w-[20px] h-[20px] hidden relative -top-[3px]" data-eye-icon></i>
+                <i data-lucide="eye-closed" class="w-[20px] h-[20px] -top-[3px]" data-eye-closed-icon></i>
+            </button>
+
+            <button class="p-3 rounded-full text-gray-600 w-[44px] h-[44px] bg-black/5 hover:bg-black/10" data-copy-btn
+                type="button">
+                <i data-lucide="copy" class="w-[20px] h-[20px]"></i>
+            </button>
+
+            <% if (isAdmin) { %>
+                <button class="p-3 rounded-full text-gray-600 w-[44px] h-[44px] bg-black/5 hover:bg-black/10 "
+                    type="button"> 
+                    <i data-lucide="edit" class="w-[20px] h-[20px] edit-btn"></i>
+                </button>
+
+                <button class="p-3 rounded-full text-red-800 w-[44px] h-[44px] bg-red-200 hover:bg-red-300 delete-btn"
+                    type="button" data-id="<%= card.id %>">
+                    <i data-lucide="trash-2" class="w-[20px] h-[20px]"></i>
+                </button>
+                <% } %>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<!-- Add Button -->
+<button id="openPopupBtn" type="button"
+  class="bg-black text-white cursor-pointer w-[100px] h-[50px] flex gap-1 items-center justify-center rounded-[99px] p-1">
+  <i data-lucide="plus" class="w-[22px] h-[22px]"></i>
+  Add
+</button>
+
+<!-- Popup Modal -->
+<div id="popupForm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-[20px] p-6 w-[90%] max-w-lg shadow-xl relative
+              sm:w-[90%] sm:max-w-lg
+              w-full h-full max-w-full rounded-none sm:rounded-[20px] sm:h-auto sm:p-6 p-2 overflow-y-auto">
+    <button id="closePopupBtn"
+      class="absolute top-3 right-3 p-3 rounded-full hover:bg-black/5 cursor-pointer hover:text-black">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <h2 class="text-xl  mb-4">Add New </h2>
+    <form action="/add-password" method="POST" class="flex flex-col gap-4">
+
+      <hr class="border-[1.5px] rounded-full bg-gray-700 w-full  mb-1">
+      <!-- platform  -->
+      <!-- Add label with icon above input -->
+
+      <div class="flex flex-col items-center gap-2 ">
+        <div class="flex flex-col items-center justify-center  ">
+          <img id="platformFavicon" src="/images/logo.png"
+            class="w-[70px] rounded-full  h-[70px] object-cover object-center" alt="">
+          <input type="hidden" name="favicon" id="faviconInput" value="/images/logo.png">
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+          <label for="platform" class="text-sm text-gray-800 flex gap-1">Platform</label>
+          <input id="urlinput" type="url" name="urlinput" placeholder="https://domain.com/"
+            class="bg-transparent w-full text-m text-gray-700 placeholder:text-gray-400 outline-none rounded-lg border-gray-200 border-2   bg-gray-100 px-2 py-2"
+            required />
+          <input id="platformInput" type="hidden" name="platform"
+            class="bg-transparent  text-gray-700 w-full placeholder:text-gray-400 outline-none" required />
+        </div>
+      </div>
+
+      <!-- Email  -->
+
+      <div class="flex flex-row items-center gap-2 ">
+        <div class="flex flex-col gap-1 w-full">
+          <label for="email" class="text-sm text-gray-800 flex gap-1">Email</label>
+          <input id="emailinput" type="email" name="email" placeholder="your@email.com"
+            class="bg-transparent w-full text-m text-gray-700 placeholder:text-gray-400 outline-none rounded-lg border-gray-200 border-2 bg-gray-100 px-2 py-2"
+            required />
+        </div>
+      </div>
+
+      <!-- username  -->
+
+      <div class="flex flex-row items-center gap-2 ">
+        <div class="flex flex-col gap-1 w-full">
+          <label for="username" class="text-sm text-gray-800 flex gap-1">Username</label>
+          <input id="usernameinput" type="text" name="username" placeholder="your username"
+            class="bg-transparent w-full text-m text-gray-700 placeholder:text-gray-400 outline-none rounded-lg border-gray-200 border-2 bg-gray-100 px-2 py-2"
+            required />
+        </div>
+      </div>
+
+      <!-- password  -->
+
+      <div class="flex flex-row items-center gap-2 ">
+        <div class="flex flex-col gap-1 w-full">
+          <label for="passwordinput" class="text-sm text-gray-800 flex gap-1">Password</label>
+          <input id="passwordinput" autocomplete="" type="password" name="password" placeholder="your password"
+            class="bg-transparent w-full text-m text-gray-700 placeholder:text-gray-400 outline-none rounded-lg border-gray-200 border-2 bg-gray-100 px-2 py-2"
+            required />
+        </div>
+      </div>
+
+      <!-- tags  -->
+
+      <div class="flex flex-row items-center gap-2 ">
+        <div class="flex flex-col gap-1 w-full">
+          <label for="tagsinput" class="text-sm text-gray-800 flex gap-1">Tags</label>
+          <input id="tagsinput" type="text" name="tags" placeholder="e.g. work, personal"
+            class="bg-transparent w-full text-m text-gray-700 placeholder:text-gray-400 outline-none rounded-lg border-gray-200 border-2 bg-gray-100 px-2 py-2" />
+          <span class="text-xs text-gray-400">Separate tags with commas</span>
+        </div>
+      </div>
+
+      <button type="submit" class="bg-black text-white px-4 py-2 rounded">Save</button>
+    </form>
+  </div>
+</div>
