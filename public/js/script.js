@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     // Show/Hide Password Logic
     document.querySelectorAll("[data-eye-btn]").forEach(function (eyeBtn) {
       const card = eyeBtn.closest(".flex.flex-col");
@@ -28,6 +28,36 @@
         }
       });
     });
+
+
+    // tab section 
+
+   const accountsTab = document.getElementById('accountsTab');
+    const usersTab = document.getElementById('usersTab');
+    const addPasswordBtn = document.getElementById('openPasswordPopupBtn');
+    const addUserBtn = document.getElementById('openUserPopupBtn');
+    const accountsSection = document.getElementById('accountsSection');
+    const usersSection = document.getElementById('usersSection');
+
+    if (accountsTab && usersTab && addPasswordBtn && addUserBtn) {
+      // Default: show password button, hide user button
+      addPasswordBtn.classList.remove('hidden');
+      addUserBtn.classList.add('hidden');
+
+      accountsTab.addEventListener('click', function () {
+        addPasswordBtn.classList.remove('hidden');
+        addUserBtn.classList.add('hidden');
+        accountsSection.style.display = '';
+        usersSection.style.display = 'none';
+      });
+
+      usersTab.addEventListener('click', function () {
+        addPasswordBtn.classList.add('hidden');
+        addUserBtn.classList.remove('hidden');
+        accountsSection.style.display = 'none';
+        usersSection.style.display = '';
+      });
+    }
 
   let toastTimeout;
 
@@ -155,16 +185,35 @@ const searchInput = document.getElementById("w_search");
   // add passward popup 
 
 
-    const popup = document.getElementById("popupForm");
-    const openBtn = document.getElementById("openPopupBtn");
-    const closeBtn = document.getElementById("closePopupBtn");
+    // Remove old popupForm logic if not used anymore
+    // const popup = document.getElementById("popupForm");
+    // const openBtn = document.getElementById("openPopupBtn");
+    // const closeBtn = document.getElementById("closePopupBtn");
 
-    openBtn?.addEventListener("click", () => popup.classList.remove("hidden"));
-    closeBtn?.addEventListener("click", () => popup.classList.add("hidden"));
+    // openBtn?.addEventListener("click", () => popup.classList.remove("hidden"));
+    // closeBtn?.addEventListener("click", () => popup.classList.add("hidden"));
+    // popup?.addEventListener("click", (e) => {
+    //   if (e.target === popup) popup.classList.add("hidden");
+    // });
 
-    // Optional: close popup when clicking outside the form
-    popup?.addEventListener("click", (e) => {
-      if (e.target === popup) popup.classList.add("hidden");
+    // Add Password/User popup logic (place this inside DOMContentLoaded)
+    const passwordPopup = document.getElementById("passwordPopupForm");
+    const userPopup = document.getElementById("userPopupForm");
+    const openPasswordBtn = document.getElementById("openPasswordPopupBtn");
+    const openUserBtn = document.getElementById("openUserPopupBtn");
+    const closePasswordBtn = document.getElementById("closePasswordPopupBtn");
+    const closeUserBtn = document.getElementById("closeUserPopupBtn");
+
+    openPasswordBtn?.addEventListener("click", () => passwordPopup.classList.remove("hidden"));
+    closePasswordBtn?.addEventListener("click", () => passwordPopup.classList.add("hidden"));
+    passwordPopup?.addEventListener("click", (e) => {
+      if (e.target === passwordPopup) passwordPopup.classList.add("hidden");
+    });
+
+    openUserBtn?.addEventListener("click", () => userPopup.classList.remove("hidden"));
+    closeUserBtn?.addEventListener("click", () => userPopup.classList.add("hidden"));
+    userPopup?.addEventListener("click", (e) => {
+      if (e.target === userPopup) userPopup.classList.add("hidden");
     });
 
 
@@ -271,6 +320,11 @@ urlInput?.addEventListener('input', function () {
   });
 
 
+  // popup 
+
+  
+
+
   // prompt("please enter the password to access", "");
 
    const url = new URL(window.location.href);
@@ -304,6 +358,50 @@ urlInput?.addEventListener('input', function () {
         }
       });
   }
-  
 
+
+  // User block toggle logic
+document.querySelectorAll('.user-block-toggle').forEach(function (checkbox) {
+  checkbox.addEventListener('change', function () {
+    const userId = this.getAttribute('data-user-id');
+    const blocked = this.checked;
+    fetch('/api/block-user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: userId, blocked })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update user');
+        // Optionally show a toast or feedback
+      })
+      .catch(() => {
+        alert('Failed to update user status');
+        // Optionally revert checkbox state
+        this.checked = !blocked;
+      });
   });
+});
+
+
+// delete user 
+
+document.querySelectorAll('.user-delete-btn').forEach(btn => {
+  btn.addEventListener('click', async function() {
+    if (!confirm('Are you sure you want to delete this user?')) return;
+    const id = this.getAttribute('data-delete-user-id');
+    const res = await fetch(`/delete-user/${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      this.closest('.card-wrapper').remove();
+    } else {
+      alert('Failed to delete user');
+    }
+  });
+});
+
+  // The user login check is now handled by server-side redirection.
+  // The `isLoggedIn` variable (if set globally from EJS) would reflect the server's view.
+  // The admin login prompt below is still active and necessary for the ?admin flow.
+  
+  // ...rest of your existing code...
+  
+});

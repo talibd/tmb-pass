@@ -81,6 +81,37 @@
         "seo"
       ],
       "favicon": "https://www.google.com/s2/favicons?domain=https://www.quora.com/&sz=64"
+    },
+    {
+      "id": "91c9",
+      "platform": "jsondataai",
+      "email": "demo@gmail.com",
+      "username": "talib",
+      "password": "31ddc0b81679da705ca42bc318ddbeae:d35e9851f2fecdbb266b477b5eb88fa3",
+      "labels": [
+        "json"
+      ],
+      "favicon": "https://www.google.com/s2/favicons?domain=https://www.jsondataai.com/&sz=64"
+    }
+  ],
+  "users": [
+    {
+      "id": "1a84",
+      "username": "himanshu",
+      "email": "himanshudata4@gmail.com",
+      "blocked": true
+    },
+    {
+      "id": "2ce3",
+      "username": "new",
+      "email": "new@gmail.com",
+      "blocked": true
+    },
+    {
+      "id": "952f",
+      "username": "talib",
+      "email": "talibkhan111105@gmail.com",
+      "blocked": false
     }
   ]
 }

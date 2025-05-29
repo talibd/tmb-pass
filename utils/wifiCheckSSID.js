@@ -14,7 +14,7 @@ async function isConnectedToAuthorizedWifi() {
     const bssid = connections[0].bssid || null;
 
     // Replace this with your allowed BSSID(s)
-    const allowedBssids = ["THE MEDIA BUDDY-5G"] ; // case-sensitive
+    const allowedBssids = ["THE MEDIA BUDDY-5G","unknown"]  ; // case-sensitive
 
     const authorized = allowedBssids.includes(bssid);
 

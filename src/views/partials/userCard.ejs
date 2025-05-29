@@ -1,0 +1,71 @@
+<div class="p-3 bg-black/5 rounded-[20px] w-full overflow-hidden flex flex-col card-wrapper">
+  <div class="flex flex-row justify-between items-center relative">
+    <div class="flex flex-row gap-2 items-center">
+      <div class="p-2 w-[50px] h-[50px] flex items-center justify-center  bg-white rounded-full">
+        <div class="w-full h-full rounded-xl flex items-center justify-center  bg65 bg-no-repeat  bg-center ">
+          <i data-lucide="user"></i>
+        </div>
+      </div>
+      <div class="flex flex-col gap-0">
+        <h1 class="font-poppins text-black   line-clamp-1 capitalize max-w-[200px]">
+          <%= user?.username %>
+        </h1>
+        <p class="text-sm leading-0 text-gray-500 line-clamp-1">
+          <%= user?.email %>
+        </p>
+      </div>
+    </div>
+    <div class="p-3 absolute top-0 right-0 z-10 rounded-full bg-[#f2f2f2] hover:bg-[#e7e6e6] cursor-pointer"
+      data-card-toggle>
+      <i data-lucide="chevron-down" class="text-gray-500 relative top-[2px]" data-chevron-down></i>
+      <i data-lucide="chevron-up" class="text-gray-500 relative  hidden" data-chevron-up></i>
+    </div>
+
+  </div>
+
+  <div class="flex-col gap-2 flex justify-center items-center overflow-hidden " data-card-content>
+    <hr class="border-[1.5px] rounded-full bg-gray-700 w-full mt-3 mb-1">
+    <div class="flex flex-row gap-5 w-full">
+      <span class="flex flex-row gap-1 items-center text-sm text-gray-500">
+        Create at:<span class="text-gray-800">2023-10-01</span>
+
+      </span>
+
+    </div>
+    <div class="flex flex-row gap-2 my-1 w-full ">
+
+      <!-- block         -->
+      <div class="flex items-center space-x-3">
+        <span class="text-gray-700 font-medium">Block:</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            class="sr-only peer user-block-toggle"
+            data-user-id="<%= user.id %>"
+            <% if (user?.isBlocked) { %>checked<% } %>
+          >
+          <!-- Track -->
+          <div class="w-12 h-6 bg-gray-300 rounded-full peer-checked:bg-red-500 transition-colors duration-300"></div>
+          <!-- Knob -->
+          <div
+            class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 peer-checked:translate-x-6">
+          </div>
+        </label>
+      </div>
+
+
+
+    </div>
+    <div class="flex flex-row items-center justify-end w-full  gap-3">
+
+     
+
+      <button data-delete-user-id="<%= user.id %>" class="p-3 rounded-full text-red-800 w-[44px] h-[44px] bg-red-200 hover:bg-red-300 user-delete-btn"
+        type="button">
+        <i data-lucide="trash-2" class="w-[20px] h-[20px]"></i>
+      </button>
+
+
+    </div>
+  </div>
+</div>

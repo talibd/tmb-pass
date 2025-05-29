@@ -1,4 +1,4 @@
-<%- include("partials/header") %>
+<%- include("partials/header", { isLoggedIn: isLoggedIn, isAdmin: isAdmin, title: title }) %>
 
   <!-- heading section  -->
 
@@ -33,36 +33,65 @@
     <!-- add button section  -->
     <% if (isAdmin) { %>
       <%- include('partials/addButton') %>
+        <!-- <button
+          class="p-3 rounded-full text-gray-600 w-[50px] flex items-center justify-center h-[50px] bg-black/5 hover:bg-black/10"
+          type="button">
+          <i data-lucide="user-plus" class="w-[20px] h-[20px]"></i>
+        </button> -->
         <% } %>
 
   </div>
+
+
+
+
   <hr class="my-6 border-[1.5px] rounded-full bg-gray-700">
 
-  <!-- password list section -->
-
-  <div class="flex flex-col gap-2">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-start">
-
-
-      <% cards.forEach(function(card) { %>
-        <%- include('partials/card', { card: { id: card.id, favicon: card.favicon || 'images/logo.png' , title:
-          card.platform, subtitle: card.email, username: card.username, password: card.password, labels: card.labels }
-          }) %>
-          <% }) %>
-
-            <!-- <% cards.forEach(function(card) { %>
-      <%- include('partials/card', { card }) %>
-    <% }) %> -->
-
-
-
-
-
-
+  <!-- tabs  -->
+  <% if(isAdmin){ %>
+    <div class="flex flex-row gap-2 items-center justify-start my-6">
+      <button
+        id="accountsTab"
+        class="tab-btn px-6 py-2 rounded-full bg-black/5 text-gray-800 transition hover:bg-black/10 focus:bg-black focus:text-white focus:outline-none focus:border-2 border-2 border-gray-500">
+        Accounts
+      </button>
+      <button
+        id="usersTab"
+        class="tab-btn px-6 py-2 rounded-full bg-black/5 text-gray-800 transition hover:bg-black/10 focus:bg-black focus:text-white focus:outline-none focus:border-2 border-2 border-gray-500">
+        Users
+      </button>
     </div>
-  </div>
+    <% } %>
 
+    <!-- password list section -->
+    <div id="accountsSection" class="flex flex-col gap-2">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-start">
+        <% cards.slice().reverse().forEach(function(card) { %>
+          <%- include('partials/card', { card: { id: card.id, favicon: card.favicon || 'images/logo.png' , title:
+            card.platform, subtitle: card.email, username: card.username, password: card.password, labels: card.labels
+            } }) %>
+        <% }) %>
+      </div>
+    </div>
 
-  <%- include('partials/editButton') %>
-    <%- include("partials/footer") %>
+    <!-- users list section  -->
+    <div id="usersSection" class="flex flex-col gap-2 " style="display:none;">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-start">
+        <% users.slice().reverse().forEach(function(user) { %>
+          <%- include('partials/userCard', { user: {
+            id:user.id,
+            username: user.username,
+            email: user.email,
+            createdAt: user.createdAt,
+            isBlocked: user.blocked
+          } }) %>
+        <% }) %>
+      </div>
+    </div>
+
+   
+
+      <%- include('partials/editButton') %>
+        <%- include("partials/footer") %>

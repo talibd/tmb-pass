@@ -1,0 +1,34 @@
+<%- include("partials/header", { isLoggedIn: false, isAdmin: false, title: title }) %>
+
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+    <div class="bg-white shadow-xl rounded-lg p-8 md:p-12 w-full max-w-md">
+        <div class="text-center mb-8">
+            <img src="/images/logo.png" alt="Logo" class="w-20 h-20 mx-auto mb-4">
+            <h1 class="text-3xl font-bold text-gray-800">User Login</h1>
+            <p class="text-gray-600">Access your password manager account.</p>
+        </div>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                <p class="font-bold">Error</p>
+                <p><%= error %></p>
+            </div>
+        <% } %>
+
+        <form action="/user-login" method="POST">
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="username">
+                    Username or Email
+                </label>
+                <input class="shadow-sm appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" id="username" name="username" type="text" placeholder="Enter your username or email" required>
+            </div>
+            <div class="flex items-center justify-center">
+                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out" type="submit">
+                    Sign In
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include("partials/footer") %>
